@@ -8,6 +8,9 @@
   <packaging>pom</packaging>
   <name>TALEND_PROJECT Codes Master</name>
   <url>http://www.talend.org/</url>
+  <modules>
+    <module>jobs/process/test_1_0.1</module>
+  </modules>
   <properties>
     <signer.version>7.3.1</signer.version>
     <talend.project.name>TALEND_PROJECT</talend.project.name>
