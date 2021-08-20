@@ -9,6 +9,7 @@
   <name>TALEND_PROJECT Codes Master</name>
   <url>http://www.talend.org/</url>
   <modules>
+    <module>code/routines</module>
     <module>jobs/process/test_1_0.1</module>
   </modules>
   <properties>
