@@ -34,6 +34,11 @@
             <destName>${talend.job.name}_run.ps1</destName>
             <filtered>true</filtered>
         </file>
+        <file>
+            <source>F:\TalendEnterprise\Talend-Studio-20200219_1130-V7.3.1\configuration\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar</source>
+            <outputDirectory>lib</outputDirectory>
+            <destName>slf4j-api-1.7.25.jar</destName>
+        </file>
     </files>
     <fileSets>
         <fileSet>
@@ -243,15 +248,14 @@
             <outputDirectory>lib</outputDirectory>
             <includes>
                 <include>org.apache.logging.log4j:log4j-slf4j-impl:jar:2.12.1</include>
+                <include>org.talend.daikon:audit-log4j2:jar:1.16.1</include>
                 <include>org.talend.components.lib:job-audit:jar:1.4</include>
-                <include>org.slf4j:slf4j-api:jar:1.7.25</include>
                 <include>net.minidev:json-smart:jar:2.4.2</include>
                 <include>org.ow2.asm:asm:jar:5.0.3</include>
                 <include>org.apache.logging.log4j:log4j-api:jar:2.12.1</include>
                 <include>net.minidev:accessors-smart:jar:1.1</include>
                 <include>org.talend.daikon:logging-event-layout:jar:1.16.1</include>
                 <include>org.talend.daikon:audit-common:jar:1.16.1</include>
-                <include>org.talend.daikon:audit-log4j1:jar:1.16.1</include>
                 <include>org.apache.logging.log4j:log4j-core:jar:2.12.1</include>
                 <include>org.apache.commons:commons-lang3:jar:3.8.1</include>
             </includes>

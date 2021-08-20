@@ -59,7 +59,7 @@
     </dependency>
     <dependency>
       <groupId>org.talend.daikon</groupId>
-      <artifactId>audit-log4j1</artifactId>
+      <artifactId>audit-log4j2</artifactId>
       <version>1.16.1</version>
     </dependency>
     <dependency>

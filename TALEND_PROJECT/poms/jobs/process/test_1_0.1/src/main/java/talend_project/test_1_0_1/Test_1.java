@@ -23,17 +23,19 @@ import java.util.Comparator;
  * Job: Test_1 Purpose: <br>
  * Description: <br>
  * 
- * @author Ponraj, Deepika
+ * @author
  * @version 7.3.1.20210623_0656-patch
  * @status
  */
 public class Test_1 implements TalendJob {
+	static {
+		System.setProperty("TalendJob.log", "Test_1.log");
+	}
+
+	private static org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(Test_1.class);
 
 	protected static void logIgnoredError(String message, Throwable cause) {
-		System.err.println(message);
-		if (cause != null) {
-			cause.printStackTrace();
-		}
+		log.error(message, cause);
 
 	}
 
@@ -427,6 +429,28 @@ public class Test_1 implements TalendJob {
 			return sb.toString();
 		}
 
+		public String toLogString() {
+			StringBuilder sb = new StringBuilder();
+
+			if (ID == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(ID);
+			}
+
+			sb.append("|");
+
+			if (NAME == null) {
+				sb.append("<null>");
+			} else {
+				sb.append(NAME);
+			}
+
+			sb.append("|");
+
+			return sb.toString();
+		}
+
 		/**
 		 * Compare keys
 		 */
@@ -495,6 +519,37 @@ public class Test_1 implements TalendJob {
 
 				int tos_count_tLogRow_1 = 0;
 
+				if (log.isDebugEnabled())
+					log.debug("tLogRow_1 - " + ("Start to work."));
+				if (log.isDebugEnabled()) {
+					class BytesLimit65535_tLogRow_1 {
+						public void limitLog4jByte() throws Exception {
+							StringBuilder log4jParamters_tLogRow_1 = new StringBuilder();
+							log4jParamters_tLogRow_1.append("Parameters:");
+							log4jParamters_tLogRow_1.append("BASIC_MODE" + " = " + "true");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("TABLE_PRINT" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("VERTICAL" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("FIELDSEPARATOR" + " = " + "\"|\"");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_HEADER" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_UNIQUE_NAME" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_COLNAMES" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("USE_FIXED_LENGTH" + " = " + "false");
+							log4jParamters_tLogRow_1.append(" | ");
+							log4jParamters_tLogRow_1.append("PRINT_CONTENT_WITH_LOG4J" + " = " + "true");
+							log4jParamters_tLogRow_1.append(" | ");
+							if (log.isDebugEnabled())
+								log.debug("tLogRow_1 - " + (log4jParamters_tLogRow_1));
+						}
+					}
+					new BytesLimit65535_tLogRow_1().limitLog4jByte();
+				}
 				if (enableLogStash) {
 					talendJobLog.addCM("tLogRow_1", "tLogRow_1", "tLogRow");
 					talendJobLogProcess(globalMap);
@@ -524,6 +579,19 @@ public class Test_1 implements TalendJob {
 
 				int tos_count_tRowGenerator_1 = 0;
 
+				if (log.isDebugEnabled())
+					log.debug("tRowGenerator_1 - " + ("Start to work."));
+				if (log.isDebugEnabled()) {
+					class BytesLimit65535_tRowGenerator_1 {
+						public void limitLog4jByte() throws Exception {
+							StringBuilder log4jParamters_tRowGenerator_1 = new StringBuilder();
+							log4jParamters_tRowGenerator_1.append("Parameters:");
+							if (log.isDebugEnabled())
+								log.debug("tRowGenerator_1 - " + (log4jParamters_tRowGenerator_1));
+						}
+					}
+					new BytesLimit65535_tRowGenerator_1().limitLog4jByte();
+				}
 				if (enableLogStash) {
 					talendJobLog.addCM("tRowGenerator_1", "tRowGenerator_1", "tRowGenerator");
 					talendJobLogProcess(globalMap);
@@ -547,10 +615,13 @@ public class Test_1 implements TalendJob {
 				}
 				tRowGenerator_1Randomizer randtRowGenerator_1 = new tRowGenerator_1Randomizer();
 
+				log.info("tRowGenerator_1 - Generating records.");
 				for (int itRowGenerator_1 = 0; itRowGenerator_1 < nb_max_row_tRowGenerator_1; itRowGenerator_1++) {
 					row1.ID = randtRowGenerator_1.getRandomID();
 					row1.NAME = randtRowGenerator_1.getRandomNAME();
 					nb_line_tRowGenerator_1++;
+
+					log.debug("tRowGenerator_1 - Retrieving the record " + nb_line_tRowGenerator_1 + ".");
 
 					/**
 					 * [tRowGenerator_1 begin ] stop
@@ -593,6 +664,10 @@ public class Test_1 implements TalendJob {
 						talendJobLogProcess(globalMap);
 					}
 
+					if (log.isTraceEnabled()) {
+						log.trace("row1 - " + (row1 == null ? "" : row1.toLogString()));
+					}
+
 ///////////////////////		
 
 					strBuffer_tLogRow_1 = new StringBuilder();
@@ -617,6 +692,8 @@ public class Test_1 implements TalendJob {
 						consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
 						globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
 					}
+					log.info("tLogRow_1 - Content of row " + (nb_line_tLogRow_1 + 1) + ": "
+							+ strBuffer_tLogRow_1.toString());
 					consoleOut_tLogRow_1.println(strBuffer_tLogRow_1.toString());
 					consoleOut_tLogRow_1.flush();
 					nb_line_tLogRow_1++;
@@ -670,6 +747,10 @@ public class Test_1 implements TalendJob {
 
 				}
 				globalMap.put("tRowGenerator_1_NB_LINE", nb_line_tRowGenerator_1);
+				log.info("tRowGenerator_1 - Generated records count:" + nb_line_tRowGenerator_1 + " .");
+
+				if (log.isDebugEnabled())
+					log.debug("tRowGenerator_1 - " + ("Done."));
 
 				ok_Hash.put("tRowGenerator_1", true);
 				end_Hash.put("tRowGenerator_1", System.currentTimeMillis());
@@ -687,6 +768,8 @@ public class Test_1 implements TalendJob {
 //////
 //////
 				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
+				if (log.isInfoEnabled())
+					log.info("tLogRow_1 - " + ("Printed row count: ") + (nb_line_tLogRow_1) + ("."));
 
 ///////////////////////    			
 
@@ -695,6 +778,9 @@ public class Test_1 implements TalendJob {
 						"output")) {
 					talendJobLogProcess(globalMap);
 				}
+
+				if (log.isDebugEnabled())
+					log.debug("tLogRow_1 - " + ("Done."));
 
 				ok_Hash.put("tLogRow_1", true);
 				end_Hash.put("tLogRow_1", System.currentTimeMillis());
@@ -706,6 +792,10 @@ public class Test_1 implements TalendJob {
 			} // end the resume
 
 		} catch (java.lang.Exception e) {
+
+			if (!(e instanceof TalendException)) {
+				log.fatal(currentComponent + " " + e.getMessage(), e);
+			}
 
 			TalendException te = new TalendException(e, currentComponent, globalMap);
 
@@ -889,6 +979,10 @@ public class Test_1 implements TalendJob {
 
 		} catch (java.lang.Exception e) {
 
+			if (!(e instanceof TalendException)) {
+				log.fatal(currentComponent + " " + e.getMessage(), e);
+			}
+
 			TalendException te = new TalendException(e, currentComponent, globalMap);
 
 			throw te;
@@ -965,6 +1059,9 @@ public class Test_1 implements TalendJob {
 		final Test_1 Test_1Class = new Test_1();
 
 		int exitCode = Test_1Class.runJobInTOS(args);
+		if (exitCode == 0) {
+			log.info("TalendJob: 'Test_1' - Done.");
+		}
 
 		System.exit(exitCode);
 	}
@@ -1000,6 +1097,36 @@ public class Test_1 implements TalendJob {
 		}
 		enableLogStash = "true".equalsIgnoreCase(System.getProperty("audit.enabled"));
 
+		if (!"".equals(log4jLevel)) {
+
+			if ("trace".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.TRACE);
+			} else if ("debug".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.DEBUG);
+			} else if ("info".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.INFO);
+			} else if ("warn".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.WARN);
+			} else if ("error".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.ERROR);
+			} else if ("fatal".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.FATAL);
+			} else if ("off".equalsIgnoreCase(log4jLevel)) {
+				org.apache.logging.log4j.core.config.Configurator.setLevel(log.getName(),
+						org.apache.logging.log4j.Level.OFF);
+			}
+			org.apache.logging.log4j.core.config.Configurator
+					.setLevel(org.apache.logging.log4j.LogManager.getRootLogger().getName(), log.getLevel());
+
+		}
+		log.info("TalendJob: 'Test_1' - Start.");
+
 		if (enableLogStash) {
 			java.util.Properties properties_talendJobLog = new java.util.Properties();
 			properties_talendJobLog.setProperty("root.logger", "audit");
@@ -1018,8 +1145,8 @@ public class Test_1 implements TalendJob {
 					.forEach(key -> properties_talendJobLog.setProperty(key.substring("audit.logger.".length()),
 							System.getProperty(key)));
 
-			org.apache.log4j.Logger.getLogger(properties_talendJobLog.getProperty("root.logger"))
-					.setLevel(org.apache.log4j.Level.DEBUG);
+			org.apache.logging.log4j.core.config.Configurator
+					.setLevel(properties_talendJobLog.getProperty("root.logger"), org.apache.logging.log4j.Level.DEBUG);
 
 			auditLogger_talendJobLog = org.talend.job.audit.JobEventAuditLoggerFactory
 					.createJobAuditLogger(properties_talendJobLog);
@@ -1331,6 +1458,6 @@ public class Test_1 implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 42516 characters generated by Talend Cloud Data Management Platform on the 20
- * August, 2021 12:14:04 PM GMT+05:30
+ * 48611 characters generated by Talend Cloud Data Management Platform on the 20
+ * August, 2021 12:19:49 PM GMT+05:30
  ************************************************************************************************/
